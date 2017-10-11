@@ -24,7 +24,7 @@ import BlockRightMenu from '../block-settings-menu';
 /**
  * Module Constants
  */
-const { LEFT, RIGHT, ESCAPE, ALT } = keycodes;
+const { LEFT, RIGHT, ESCAPE, F10, isMetaKey } = keycodes;
 
 function FirstChild( { children } ) {
 	const childrenArray = Children.toArray( children );
@@ -72,7 +72,7 @@ class BlockToolbar extends Component {
 		const tabbables = focus.tabbable.find( this.toolbar );
 		const indexOfTabbable = tabbables.indexOf( document.activeElement );
 
-		if ( event.keyCode === ALT ) {
+		if ( isMetaKey( event.keyCode ) || ( event.keyCode === F10 && event.altKey ) ) {
 			if ( tabbables.length ) {
 				tabbables[ 0 ].focus();
 			}
